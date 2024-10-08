@@ -1,0 +1,78 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<CaracolTanqueos.Models.Vehiculo>
+
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+    <div class="container-fluid">
+        <div class="header-area">
+            <h2>Mantenimiento Vehículos</h2>
+           @*  <form asp-controller="Vehiculos" asp-action="Create" method="post">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <select class="form-select" name="IdArea">
+                        <option selected>Seleccione un área</option>
+                        @foreach (var area in ViewBag.Areas)
+                        {
+                            <option id="@area.Id" value="@area.Id">@area.Nombre</option>
+
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" name="Placa" class="form-control" placeholder="Identificación (placa, Planta)">
+                </div>
+                <div class="col-md-3">                   
+                    <input type="text" name="Descripcion" class="form-control" placeholder="Descripción Vehículo"> 
+                </div>
+                <div class="col-md-3">
+                    <input type="text" name="ConsumoEstandar" class="form-control" placeholder="Consumo Estándar Km/Horas">
+                </div>
+            </div>
+            <div class="row g-3">                             
+                
+                <div class="col-md-3">                  
+                    <button type="submit">Crear Vehículo</button>
+                </div>
+            </div>
+            </form> *@
+        </div>
+
+        <table id="vehiculosTable" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Área</th>
+                    <th>Identificación</th>
+                    <th>Descripción Vehículo</th>
+                    <th>Tipo Vehículo</th>
+                    <th>Combustible</th>
+                    <th>Consumo</th>
+                    <th>Estado</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var vehiculo in ViewBag.Vehiculos)
+                {
+                    <tr>
+                        <td>@vehiculo.Area.Nombre</td>
+                        <td>@vehiculo.Vehiculo.Placa</td>
+                        <td>@vehiculo.Vehiculo.Descripcion</td>
+                        <td>@vehiculo.Tipo.Nombre</td>
+                        <td>@vehiculo.TiposCombustible.Nombre</td>
+                        <td>@vehiculo.Vehiculo.ConsumoEstandar</td>
+                        <td>@vehiculo.Estado.Nombre</td>
+                        <td></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    </body>
+    </html>
+

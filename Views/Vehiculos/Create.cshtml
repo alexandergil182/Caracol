@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<CaracolTanqueos.Models.Vehiculo>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="header-area">
+            <h2>Mantenimiento Vehículos</h2>
+            <form asp-controller="Vehiculos" asp-action="Create" method="post">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <select class="form-select" name="IdArea" asp-for="IdArea">
+                            <option selected>Seleccione un área</option>
+                            @foreach (var area in ViewBag.Areas)
+                            {
+                                <option id="@area.Id" value="@area.Id">@area.Nombre</option>
+
+                            }
+                        </select>
+                        <select class="form-select" name="IdTipo" asp-for="IdTipo">
+                            <option selected>Seleccione un tipo de equipo</option>
+                            @foreach (var tipo_equipo in ViewBag.TiposEquipos)
+                            {
+                                <option id="@tipo_equipo.Id" value="@tipo_equipo.Id">@tipo_equipo.Nombre</option>
+
+                            }
+                        </select>
+                        <select class="form-select" name="IdTipoCombustible" asp-for="IdTipoCombustible">
+                            <option selected>Seleccione un tipo de combustible</option>
+                            @foreach (var tipo_combustible in ViewBag.TiposCombustibles)
+                            {
+                                <option id="@tipo_combustible.Id" value="@tipo_combustible.Id">@tipo_combustible.Nombre</option>
+
+                            }
+                        </select>
+                        <select class="form-select" name="IdEstado" asp-for="IdEstado">
+                            <option selected>Seleccione un estado</option>
+                            @foreach (var estado in ViewBag.Estados)
+                            {
+                                <option id="@estado.Id" value="@estado.Id">@estado.Nombre</option>
+
+                            }
+                        </select>
+
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="Placa" asp-for="Placa" class="form-control" placeholder="Identificación (placa, Planta)">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="Descripcion" asp-for="Descripcion" class="form-control" placeholder="Descripción Vehículo">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="ConsumoEstandar" asp-for="ConsumoEstandar" class="form-control" placeholder="Consumo Estándar Km/Horas">
+                    </div>
+                </div>
+                <div class="row g-3">
+
+                    <div class="col-md-3">
+                        <button type="submit">Crear Vehículo</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+               
+    </div>
+</body>
+</html>
+
